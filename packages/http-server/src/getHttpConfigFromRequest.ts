@@ -3,7 +3,7 @@ import { pipe } from 'fp-ts/function';
 import * as E from 'fp-ts/Either';
 import * as D from 'io-ts/lib/Decoder';
 //@ts-ignore
-import * as parsePreferHeader from 'parse-prefer-header';
+import parsePreferHeader from 'parse-prefer-header';
 
 const BooleanFromString = D.parse<string, boolean>(s =>
   s === 'true' ? D.success(true) : s === 'false' ? D.success(false) : D.failure(s, 'a boolean')

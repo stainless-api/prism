@@ -5,9 +5,9 @@ import * as chalk from 'chalk';
 import * as cluster from 'cluster';
 import * as E from 'fp-ts/Either';
 import { pipe } from 'fp-ts/function';
-import * as pino from 'pino';
-import * as signale from 'signale';
-import * as split from 'split2';
+import pino from 'pino';
+import { Signale } from 'signale';
+import split from 'split2';
 import { PassThrough, Readable } from 'stream';
 import { LOG_COLOR_MAP } from '../const/options';
 import { CreatePrism } from './runner';
@@ -21,6 +21,8 @@ type PrismLogDescriptor = pino.LogDescriptor & {
   offset?: number;
   input: IHttpRequest;
 };
+
+const signale = new Signale()
 
 signale.config({ displayTimestamp: true });
 

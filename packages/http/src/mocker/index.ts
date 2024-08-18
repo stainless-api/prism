@@ -9,7 +9,7 @@ import {
   INodeExample,
 } from '@stoplight/types';
 
-import * as caseless from 'caseless';
+import caseless from 'caseless';
 import * as chalk from 'chalk';
 import * as E from 'fp-ts/Either';
 import * as Record from 'fp-ts/Record';

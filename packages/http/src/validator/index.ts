@@ -7,7 +7,7 @@ import {
   IHttpOperationResponse,
   IMediaTypeContent,
 } from '@stoplight/types';
-import * as caseless from 'caseless';
+import caseless from 'caseless';
 import * as contentType from 'content-type';
 import * as A from 'fp-ts/Array';
 import * as O from 'fp-ts/Option';

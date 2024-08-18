@@ -8,7 +8,7 @@ import { fold } from 'fp-ts/TaskEither';
 import * as Task from 'fp-ts/Task';
 import * as O from 'fp-ts/Option';
 import { pipe } from 'fp-ts/function';
-import * as pino from 'pino';
+import pino from 'pino';
 
 const logger = pino();
 logger.success = logger.info;
