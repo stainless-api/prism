@@ -1,4 +1,4 @@
-import * as pino from 'pino';
+import pino from 'pino';
 import { defaultsDeep } from 'lodash';
 
 export function createLogger(

@@ -1,6 +1,6 @@
 import { IHttpContent, IHttpOperationResponse, IMediaTypeContent } from '@stoplight/types';
 // @ts-ignore
-import * as accepts from 'accepts';
+import accepts from 'accepts';
 import * as contentType from 'content-type';
 import * as O from 'fp-ts/Option';
 import * as A from 'fp-ts/Array';

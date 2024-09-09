@@ -3,7 +3,7 @@
   "version": "5.9.0",
   "author": "Stainless <dev@stainlessapi.com>",
   "bin": {
-    "prism": "./dist/index.js"
+    "prism": "./dist/bundled.js"
   },
   "bugs": "https://github.com/stainless-api/prism/issues",
   "dependencies": {
@@ -43,6 +43,7 @@
     "url": "https://github.com/stainless-api/prism.git"
   },
   "scripts": {
+    "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/bundled.js --inject:./src/import-meta-url.js --define:import.meta.url=import_meta_url --main-fields=module,main",
     "cli": "node -r ts-node/register/transpile-only -r tsconfig-paths/register src/index.ts",
     "cli:debug": "node -r ts-node/register/transpile-only -r tsconfig-paths/register --inspect-brk src/index.ts"
   },

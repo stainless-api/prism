@@ -1,6 +1,6 @@
 import { HttpParamStyles, IHttpPathParam } from '@stoplight/types';
 import { IHttpNameValue } from '../../types';
-import * as MIMEType from 'whatwg-mimetype';
+import MIMEType from 'whatwg-mimetype';
 import { validateParams } from './params';
 import { header } from '../deserializers';
 import { ValidationContext } from './types';

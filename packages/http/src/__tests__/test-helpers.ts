@@ -1,4 +1,4 @@
-import * as pino from 'pino';
+import pino from 'pino';
 
 /**
  * Creates special instance of pino logger that prevent collecting or logging anything

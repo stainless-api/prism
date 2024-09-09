@@ -1199,6 +1199,58 @@
   resolved "https://registry.npmjs.org/@stoplight/path/-/path-1.3.2.tgz"
   integrity sha512-lyIc6JUlUA8Ve5ELywPC8I2Sdnh1zc1zmbYgVarhXIp9YeAB0ReeqmGEOWNtlHkbP2DAA1AL65Wfn2ncjK/jtQ==
 
+"@stoplight/prism-http-server@5.8.2":
+  version "5.8.2"
+  resolved "https://registry.yarnpkg.com/@stoplight/prism-http-server/-/prism-http-server-5.8.2.tgz#04b09e34dc14b5a731dceb5e1e836a7f9ce33429"
+  integrity sha512-XbK4v7vYxkPL3bYdWY29RcUrfbsgaIAFc8i5MZiDzkNw126Jqhvv0KfCnybSSBdVUV2+0gWASou3vevoaFLjfQ==
+  dependencies:
+    "@stoplight/prism-core" "^5.8.0"
+    "@stoplight/prism-http" "^5.8.2"
+    "@stoplight/types" "^14.1.0"
+    fast-xml-parser "^4.2.0"
+    fp-ts "^2.11.5"
+    io-ts "^2.2.16"
+    lodash "^4.17.21"
+    micri "^4.3.0"
+    node-fetch "^2.6.5"
+    parse-prefer-header "1.0.0"
+    tslib "^2.3.1"
+    type-is "^1.6.18"
+
+"@stoplight/prism-http@5.8.2":
+  version "5.8.2"
+  resolved "https://registry.yarnpkg.com/@stoplight/prism-http/-/prism-http-5.8.2.tgz#20b50c1be981d2bb6506b099c202f97c6ed475d0"
+  integrity sha512-v2NQN+ob+uYABMRjtamDsM44OqPEd2YQ8HYHPO5wQvv+5MJn/R/e3thAJGj/hAkhepTLDactBHJTP6DZpp0Lbg==
+  dependencies:
+    "@faker-js/faker" "^6.0.0"
+    "@stoplight/http-spec" "^7.0.3"
+    "@stoplight/json" "^3.18.1"
+    "@stoplight/json-schema-merge-allof" "0.7.8"
+    "@stoplight/json-schema-ref-parser" "9.2.7"
+    "@stoplight/json-schema-sampler" "0.3.0"
+    "@stoplight/prism-core" "^5.8.0"
+    "@stoplight/types" "^14.1.0"
+    "@stoplight/yaml" "^4.2.3"
+    abstract-logging "^2.0.1"
+    accepts "^1.3.7"
+    ajv "^8.4.0"
+    ajv-formats "^2.1.1"
+    caseless "^0.12.0"
+    chalk "^4.1.2"
+    content-type "^1.0.4"
+    fp-ts "^2.11.5"
+    http-proxy-agent "^5.0.0"
+    https-proxy-agent "^5.0.0"
+    json-schema-faker "0.5.3"
+    lodash "^4.17.21"
+    node-fetch "^2.6.5"
+    parse-multipart-data "^1.5.0"
+    pino "^6.13.3"
+    tslib "^2.3.1"
+    type-is "^1.6.18"
+    uri-template-lite "^22.9.0"
+    whatwg-mimetype "^3.0.0"
+
 "@stoplight/types@14.1.0":
   version "14.1.0"
   resolved "https://registry.yarnpkg.com/@stoplight/types/-/types-14.1.0.tgz#36b04488acc1d8ab5bb712416f50d3bc99610b34"
