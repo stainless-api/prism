@@ -1,7 +1,6 @@
 name: Stainless CI
 
 on:
-  pull_request:
   push:
 
 jobs:
