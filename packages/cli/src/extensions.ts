@@ -9,7 +9,7 @@ export async function configureExtensionsUserProvided(
   specFilePathOrObject: string | object,
   cliParamOptions: { [option: string]: any }
 ): Promise<void> {
-  const result = decycle(await new $RefParser().dereference(specFilePathOrObject));
+  const result = decycle(await new $RefParser().bundle(specFilePathOrObject));
 
   resetJSONSchemaGenerator();
 
