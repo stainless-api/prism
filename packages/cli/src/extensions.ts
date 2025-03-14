@@ -1,19 +1,30 @@
 import * as $RefParser from '@stoplight/json-schema-ref-parser';
-import { decycle } from '@stoplight/json';
 import { get, camelCase, forOwn } from 'lodash';
 import { JSONSchemaFaker } from 'json-schema-faker';
 import type { JSONSchemaFakerOptions } from 'json-schema-faker';
 import { resetJSONSchemaGenerator } from '@stoplight/prism-http';
+import { safeDecycle } from './safeDecycle';
 
 export async function configureExtensionsUserProvided(
   specFilePathOrObject: string | object,
   cliParamOptions: { [option: string]: any }
 ): Promise<void> {
-  const result = decycle(await new $RefParser().bundle(specFilePathOrObject));
+  console.log('Parsing spec...');
+
+  // Try to dereference the spec
+  console.log('Dereferencing spec...');
+  const dereferenced = await new $RefParser().dereference(specFilePathOrObject);
+  console.log('Dereferencing complete, decycling...');
+
+  // Apply safe decycle
+  const result = safeDecycle(dereferenced);
+  // Handle result which could be a Promise from our timeout mechanism
+  const finalResult = await (result instanceof Promise ? result : Promise.resolve(result));
+  console.log('Decycling complete');
 
   resetJSONSchemaGenerator();
 
-  forOwn(get(result, 'x-json-schema-faker', {}), (value: any, option: string) => {
+  forOwn(get(finalResult, 'x-json-schema-faker', {}), (value: any, option: string) => {
     setFakerValue(option, value);
   });
 
