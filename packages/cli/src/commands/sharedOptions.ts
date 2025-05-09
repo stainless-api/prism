@@ -1,6 +1,6 @@
 import { Dictionary } from '@stoplight/types';
 import { Options } from 'yargs';
-import * as pino from 'pino';
+import pino from 'pino';
 
 const sharedOptions: Dictionary<Options> = {
   port: {

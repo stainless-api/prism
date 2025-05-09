@@ -13,7 +13,7 @@ import { IPrismHttpServer, IPrismHttpServerOpts } from './types';
 import { IPrismDiagnostic } from '@stoplight/prism-core';
 import { MicriHandler } from 'micri';
 import micri, { Router, json, send, text } from 'micri';
-import * as typeIs from 'type-is';
+import typeIs from 'type-is';
 import { getHttpConfigFromRequest } from './getHttpConfigFromRequest';
 import { serialize } from './serialize';
 import { merge } from 'lodash/fp';

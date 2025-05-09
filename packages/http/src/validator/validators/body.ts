@@ -14,7 +14,7 @@ import { validateAgainstSchema } from './utils';
 import { NonEmptyArray } from 'fp-ts/NonEmptyArray';
 import { ValidationContext, validateFn } from './types';
 // @ts-ignore no typings
-import * as mergeAllOf from '@stoplight/json-schema-merge-allof';
+import mergeAllOf from '@stoplight/json-schema-merge-allof';
 
 import { stripReadOnlyProperties, stripWriteOnlyProperties } from '../../utils/filterRequiredProperties';
 import { JSONSchema7 } from 'json-schema';
