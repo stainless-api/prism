@@ -535,6 +535,103 @@ describe('http router', () => {
             );
           });
         });
+
+        describe('given overlapping endpoints with path parameters', () => {
+          it('should prefer concrete path over templated path for loadbalancer status endpoint', () => {
+            const templatedPath = '/cloud/v1/loadbalancers/{project_id}/{region_id}/{loadbalancer_id}';
+            const concretePath = '/cloud/v1/loadbalancers/{project_id}/{region_id}/status';
+            const requestPath = '/cloud/v1/loadbalancers/proj123/us-east-1/status';
+
+            const templatedResource = createResource(method, templatedPath, []);
+            const concreteResource = createResource(method, concretePath, []);
+
+            assertRight(
+              route({
+                resources: [templatedResource, concreteResource],
+                input: {
+                  method,
+                  url: {
+                    path: requestPath,
+                  },
+                },
+              }),
+              resource => expect(resource).toBe(concreteResource)
+            );
+          });
+
+          it('should match templated path when no concrete path matches', () => {
+            const templatedPath = '/cloud/v1/loadbalancers/{project_id}/{region_id}/{loadbalancer_id}';
+            const concretePath = '/cloud/v1/loadbalancers/{project_id}/{region_id}/status';
+            const requestPath = '/cloud/v1/loadbalancers/proj123/us-east-1/lb-12345';
+
+            const templatedResource = createResource(method, templatedPath, []);
+            const concreteResource = createResource(method, concretePath, []);
+
+            assertRight(
+              route({
+                resources: [templatedResource, concreteResource],
+                input: {
+                  method,
+                  url: {
+                    path: requestPath,
+                  },
+                },
+              }),
+              resource => expect(resource).toBe(templatedResource)
+            );
+          });
+
+          it('should prefer path with more concrete segments when both have templates', () => {
+            const moreTemplatedPath = '/api/{version}/users/{id}/{action}';
+            const lessTemplatedPath = '/api/v1/users/{id}/profile';
+            const requestPath = '/api/v1/users/123/profile';
+
+            const moreTemplatedResource = createResource(method, moreTemplatedPath, []);
+            const lessTemplatedResource = createResource(method, lessTemplatedPath, []);
+
+            assertRight(
+              route({
+                resources: [moreTemplatedResource, lessTemplatedResource],
+                input: {
+                  method,
+                  url: {
+                    path: requestPath,
+                  },
+                },
+              }),
+              resource => expect(resource).toBe(lessTemplatedResource)
+            );
+          });
+
+          it('should handle multiple overlapping endpoints correctly', () => {
+            const fullyTemplated = '/api/{a}/{b}/{c}';
+            const partiallyTemplated1 = '/api/users/{b}/{c}';
+            const partiallyTemplated2 = '/api/users/profile/{c}';
+            const fullyConcrete = '/api/users/profile/settings';
+
+            const requestPath = '/api/users/profile/settings';
+
+            const resources = [
+              createResource(method, fullyTemplated, []),
+              createResource(method, partiallyTemplated1, []),
+              createResource(method, partiallyTemplated2, []),
+              createResource(method, fullyConcrete, []),
+            ];
+
+            assertRight(
+              route({
+                resources,
+                input: {
+                  method,
+                  url: {
+                    path: requestPath,
+                  },
+                },
+              }),
+              resource => expect(resource.path).toBe(fullyConcrete)
+            );
+          });
+        });
       });
 
       test('should not match when the method does not exist', () => {

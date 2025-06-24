@@ -19,26 +19,50 @@ import { isTemplated } from './matchPath';
 
 // matching score is calcualated for resources based upon their match with given request
 // matchScore is introduced to sort the resources in case we get multiple matches for given request.
+// Higher scores indicate more specific matches (concrete paths are preferred over templated ones)
 const calculateMatchScore = (endpoint: string, request: string) => {
   const endpointParts = endpoint.split('/');
   const requestParts = request.split('/');
   let score = 0;
-  for (let i = 0; i < endpointParts.length; i++) {
+  
+  // Give a large bonus for endpoints with no templated parts at all
+  const hasNoTemplates = !endpointParts.some(part => isTemplated(part));
+  if (hasNoTemplates) {
+    score += 1000;
+  }
+  
+  // Score each matching segment, with earlier segments weighted more heavily
+  for (let i = 0; i < endpointParts.length && i < requestParts.length; i++) {
+    const weight = Math.pow(10, endpointParts.length - i); // Earlier segments get higher weight
+    
     if (endpointParts[i] === requestParts[i]) {
-      score++;
+      // Exact match gets highest score
+      score += weight * 2;
     } else if (isTemplated(endpointParts[i])) {
-      score += 0.5;
+      // Templated match gets lower score
+      score += weight;
     } else {
-      break;
+      // No match means this endpoint doesn't match the request
+      return -1;
     }
   }
+  
+  // Penalize if lengths don't match
+  if (endpointParts.length !== requestParts.length) {
+    return -1;
+  }
+  
   return score;
 };
 
 
 //sort endpoints based on match score
 const sortEndpointsByMatch = (endpoints:IHttpOperation[], request: string) => {
-  return A.sort(O.contramap((endpoint: IHttpOperation) => calculateMatchScore(endpoint.path, request))(O.ordNumber))(endpoints).reverse();
+  // Sort by score descending, keeping all endpoints (negative scores will be at the end)
+  return endpoints
+    .map(endpoint => ({ endpoint, score: calculateMatchScore(endpoint.path, request) }))
+    .sort((a, b) => b.score - a.score)
+    .map(item => item.endpoint);
 };
 
 const route: IPrismComponents<IHttpOperation, IHttpRequest, unknown, IHttpConfig>['route'] = ({ resources, input }) => {
