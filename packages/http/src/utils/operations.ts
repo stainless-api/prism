@@ -18,9 +18,7 @@ export async function getHttpOperationsFromSpec(specFilePathOrObject: string | o
       'User-Agent': `PrismMockServer/${prismVersion} (${os.type()} ${os.arch()} ${os.release()})`,
     },
   };
-  const result = decycle(
-    await new $RefParser().dereference(specFilePathOrObject, { resolve: { http: httpResolverOpts } })
-  );
+  const result = decycle(await new $RefParser().bundle(specFilePathOrObject, { resolve: { http: httpResolverOpts } }));
 
   let operations: IHttpOperation[] = [];
   if (isOpenAPI2(result)) operations = transformOas2Operations(result);
