@@ -25,6 +25,7 @@
     "sanitize-html": "2.12.1"
   },
   "devDependencies": {
+    "@eslint/js": "^9.29.0",
     "@stoplight/types": "^14.1.0",
     "@types/caseless": "^0.12.2",
     "@types/content-type": "^1.1.5",
@@ -43,13 +44,11 @@
     "@types/uri-template-lite": "^19.12.1",
     "@types/urijs": "^1.19.17",
     "@types/whatwg-mimetype": "^3.0.0",
-    "@typescript-eslint/eslint-plugin": "^2.34.0",
-    "@typescript-eslint/parser": "^4.33.0",
     "abstract-logging": "^2.0.1",
     "diff-js-xml": "^1.0.5",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^7.2.0",
-    "eslint-plugin-prettier": "^4.2.1",
+    "eslint": "^9.29.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.1",
     "fast-xml-parser": "^4.2.0",
     "form-data": "^4.0.0",
     "gavel": "10.0.3",
@@ -62,7 +61,7 @@
     "lodash": "^4.17.21",
     "nock": "^13.1.3",
     "node-fetch": "^2.6.7",
-    "prettier": "^2.4.1",
+    "prettier": "^3.6.1",
     "split2": "^4.2.0",
     "tmp": "^0.2.0",
     "ts-jest": "^29.1.1",
@@ -71,7 +70,8 @@
     "tsconfig-paths": "^4.1.0",
     "ttypescript": "^1.5.15",
     "type-is": "^1.6.18",
-    "typescript": "4.9.3"
+    "typescript": "4.9.3",
+    "typescript-eslint": "^8.35.0"
   },
   "lint-staged": {
     "**/packages/**/*.ts": [
