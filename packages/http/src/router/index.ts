@@ -35,10 +35,11 @@ const calculateMatchScore = (endpoint: string, request: string) => {
   return score;
 };
 
-
 //sort endpoints based on match score
-const sortEndpointsByMatch = (endpoints:IHttpOperation[], request: string) => {
-  return A.sort(O.contramap((endpoint: IHttpOperation) => calculateMatchScore(endpoint.path, request))(O.ordNumber))(endpoints).reverse();
+const sortEndpointsByMatch = (endpoints: IHttpOperation[], request: string) => {
+  return A.sort(O.contramap((endpoint: IHttpOperation) => calculateMatchScore(endpoint.path, request))(O.ordNumber))(
+    endpoints
+  ).reverse();
 };
 
 const route: IPrismComponents<IHttpOperation, IHttpRequest, unknown, IHttpConfig>['route'] = ({ resources, input }) => {

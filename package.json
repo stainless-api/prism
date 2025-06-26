@@ -10,7 +10,7 @@
     "url": "https://github.com/stainless-api/prism.git"
   },
   "scripts": {
-    "lint": "eslint ./packages/**/src/*.ts",
+    "lint": "eslint ./packages/**/src/**/*.ts",
     "lint.fix": "yarn lint --fix",
     "clean": "rm -rf ./packages/**/dist ./packages/**/*.tsbuildinfo",
     "build": "npm run clean && ttsc --build --verbose ./packages/tsconfig.build.json",

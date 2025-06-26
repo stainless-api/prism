@@ -34,58 +34,58 @@ export function deserializeFormBody(
   // objects that were split on the ',' character, such as [ '{"foo":"value"}', '{"foo":"dd"', '"xx":"xx"}' ]. This function
   // processes such cases so that complete JSON objects, i.e. [ '{"foo":"value"}', '{"foo":"dd", "xx":"xx"}' ], are handled
   function parseBrokenJSONArray(inputArray: string[]) {
-    let parsedJSONObjects: any[] = [];
-    let currentJSONObject: string = "";
+    const parsedJSONObjects: any[] = [];
+    let currentJSONObject: string = '';
 
-    for (let item of inputArray) {
-      currentJSONObject += (currentJSONObject.length > 0 ? "," : "") + item;
+    for (const item of inputArray) {
+      currentJSONObject += (currentJSONObject.length > 0 ? ',' : '') + item;
       try {
         const parsed = JSON.parse(currentJSONObject);
         parsedJSONObjects.push(parsed);
-        currentJSONObject = "";
-      } catch (_) {}
+        currentJSONObject = '';
+      } catch {
+        // Wasn't a complete JSON object yet.
+      }
     }
 
-    return [parsedJSONObjects, currentJSONObject]
+    return [parsedJSONObjects, currentJSONObject];
   }
 
-  return pipe(
-    Object.keys(schema.properties),
-    (properties: string[]) => {
-      const deserialized = {}
-      for (let property of properties) {
-        deserialized[property] = decodedUriParams[property];
-        const encoding = encodings.find(enc => enc.property === property);
+  return pipe(Object.keys(schema.properties), (properties: string[]) => {
+    const deserialized = {};
+    for (const property of properties) {
+      deserialized[property] = decodedUriParams[property];
+      const encoding = encodings.find(enc => enc.property === property);
 
-        if (encoding && encoding.style) {
-          const deserializer = body[encoding.style];
-          const propertySchema = schema.properties?.[property];
+      if (encoding && encoding.style) {
+        const deserializer = body[encoding.style];
+        const propertySchema = schema.properties?.[property];
 
-          if (propertySchema && typeof propertySchema !== 'boolean') {
-            let deserializedValues = deserializer(property, decodedUriParams, propertySchema, encoding.explode)
+        if (propertySchema && typeof propertySchema !== 'boolean') {
+          let deserializedValues = deserializer(property, decodedUriParams, propertySchema, encoding.explode);
 
-            // As per https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.1.md#styleValues, 
-            // the default deserialization standard of objects in an array of objects is JSON
-            const items = propertySchema.items;
-            if (Array.isArray(deserializedValues) && typeof items === "object" && items['type'] === 'object') {
-              const [parsedValues, unparsedJSONString] = parseBrokenJSONArray(deserializedValues);
-              if (unparsedJSONString.length > 0) {
-                return E.left<NonEmptyArray<IPrismDiagnostic>>([
-                  {
-                    message: `Cannot deserialize JSON object array in form data request body. Make sure the array is in JSON`,
-                    code: 415,
-                    severity: DiagnosticSeverity.Error,
-                  },
-                ])
-              } else {
-                deserializedValues = parsedValues;
-              }
+          // As per https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.1.md#styleValues,
+          // the default deserialization standard of objects in an array of objects is JSON
+          const items = propertySchema.items;
+          if (Array.isArray(deserializedValues) && typeof items === 'object' && items['type'] === 'object') {
+            const [parsedValues, unparsedJSONString] = parseBrokenJSONArray(deserializedValues);
+            if (unparsedJSONString.length > 0) {
+              return E.left<NonEmptyArray<IPrismDiagnostic>>([
+                {
+                  message: `Cannot deserialize JSON object array in form data request body. Make sure the array is in JSON`,
+                  code: 415,
+                  severity: DiagnosticSeverity.Error,
+                },
+              ]);
+            } else {
+              deserializedValues = parsedValues;
             }
-
-            deserialized[property] = deserializedValues;
           }
+
+          deserialized[property] = deserializedValues;
         }
       }
+    }
 
     return E.right(deserialized);
   });
@@ -131,21 +131,21 @@ export function parseMultipartFormDataParams(
 export function decodeUriEntities(target: Dictionary<string>, mediaType: string) {
   return Object.entries(target).reduce((result, [k, v]) => {
     try {
-      // In application/x-www-form-urlencoded format, the standard encoding of spaces is the plus sign "+", 
-      // and plus signs in the input string are encoded as "%2B". The encoding of spaces as plus signs is 
-      // unique to application/x-www-form-urlencoded. decodeURIComponent incorrectly handles decoding the plus signs. 
-      // encodeURIComponent correctly encodes spaces as + (plus signs), and actual plus signs as %2B, but 
-      // decodeURIComponent only decodes %2B and leaves the +'s that represent spaces encoded as +. This means 
-      // the result has + signs that are indistinguishable as originally spaces or originally plus signs. Therefore, 
-      // we must replace all + in the encoded string (which must all represent spaces by the standard), with %20, 
+      // In application/x-www-form-urlencoded format, the standard encoding of spaces is the plus sign "+",
+      // and plus signs in the input string are encoded as "%2B". The encoding of spaces as plus signs is
+      // unique to application/x-www-form-urlencoded. decodeURIComponent incorrectly handles decoding the plus signs.
+      // encodeURIComponent correctly encodes spaces as + (plus signs), and actual plus signs as %2B, but
+      // decodeURIComponent only decodes %2B and leaves the +'s that represent spaces encoded as +. This means
+      // the result has + signs that are indistinguishable as originally spaces or originally plus signs. Therefore,
+      // we must replace all + in the encoded string (which must all represent spaces by the standard), with %20,
       // the non-application/x-www-form-urlencoded encoding of spaces, so that decodeURIComponent decodes them correctly
       if (typeIs(mediaType, 'application/x-www-form-urlencoded')) {
-        v = v.replaceAll('+', '%20')
+        v = v.replaceAll('+', '%20');
       }
       // NOTE: this will decode the value even if it shouldn't (i.e when text/plain mime type).
       // the decision to decode or not should be made before calling this function
       result[decodeURIComponent(k)] = decodeURIComponent(v);
-    } catch (e) {
+    } catch {
       // when the data is binary, for example, uri decoding will fail so leave value as-is
       result[decodeURIComponent(k)] = v;
     }
@@ -180,7 +180,7 @@ function deserializeAndValidate(
     E.chain(encodedUriParams => validateAgainstReservedCharacters(encodedUriParams, encodings, prefix)),
     E.map(target => decodeUriEntities(target, content.mediaType)),
     E.chain(decodedUriEntities => deserializeFormBody(schema, encodings, decodedUriEntities)),
-    E.chain(deserialised => 
+    E.chain(deserialised =>
       pipe(
         validateAgainstSchema(deserialised, schema, true, context, prefix, bundle),
         E.fromOption(() => deserialised),

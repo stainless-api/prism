@@ -20,7 +20,7 @@ const proxyCommand: CommandModule = {
       .coerce('upstream', (value: string) => {
         try {
           return new URL(value);
-        } catch (e) {
+        } catch {
           throw new Error(`Invalid upstream URL provided: ${value}`);
         }
       })

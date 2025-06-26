@@ -24,9 +24,11 @@ const validate =
       ),
       element: Object.assign({ method: 'get', url: { path: '/', query: {} } }, inputExtension),
     });
-    length === 0
-      ? assertRight(validationResult)
-      : assertLeft(validationResult, error => expect(error).toHaveLength(length));
+    if (length === 0) {
+      assertRight(validationResult);
+    } else {
+      assertLeft(validationResult, error => expect(error).toHaveLength(length));
+    }
   };
 
 const mockError: IPrismDiagnostic = {

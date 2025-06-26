@@ -138,7 +138,7 @@ describe('Prefer header overrides', () => {
       describe('and I hit the same endpoint twice with the same seed', () => {
         let payload: unknown;
         let secondPayload: unknown;
-  
+
         beforeAll(async () => {
           payload = await fetch(new URL('/no_auth/pets?name=joe', server.address), {
             method: 'GET',
@@ -149,7 +149,7 @@ describe('Prefer header overrides', () => {
             headers: { prefer: 'seed=test_seed' },
           }).then(r => r.json());
         });
-  
+
         it('should return the same object', () => expect(payload).toStrictEqual(secondPayload));
       });
     });
@@ -161,7 +161,7 @@ describe('Seeded dynamic examples', () => {
 
   beforeAll(async () => {
     server = await instantiatePrism(resolve(__dirname, 'fixtures', 'petstore.no-auth.oas3.yaml'), {
-      mock: { dynamic: true, seed: "test_seed" },
+      mock: { dynamic: true, seed: 'test_seed' },
     });
   });
 
@@ -173,9 +173,7 @@ describe('Seeded dynamic examples', () => {
       let secondPayload: unknown;
 
       beforeAll(async () => {
-        payload = await fetch(new URL('/no_auth/pets?name=joe', server.address), { method: 'GET' }).then(r =>
-          r.json()
-        );
+        payload = await fetch(new URL('/no_auth/pets?name=joe', server.address), { method: 'GET' }).then(r => r.json());
         secondPayload = await fetch(new URL('/no_auth/pets?name=joe', server.address), { method: 'GET' }).then(r =>
           r.json()
         );

@@ -55,13 +55,13 @@ describe('filterRequiredProperties', () => {
             properties: {
               id: {
                 readOnly: true,
-                type: 'string'
+                type: 'string',
               },
               name: {
-                type: 'string'
-              }
-            }
-          }
+                type: 'string',
+              },
+            },
+          },
         },
         title: { type: 'string', readOnly: true },
         address: { type: 'integer' },
@@ -70,7 +70,7 @@ describe('filterRequiredProperties', () => {
     };
 
     assertSome(stripReadOnlyProperties(schema), schema => {
-      expect(schema.properties).not.toBeNull()
+      expect(schema.properties).not.toBeNull();
       if (schema.properties) {
         const arr_items = (schema.properties.objectsArray as JSONSchema).items as JSONSchema;
 
@@ -104,13 +104,13 @@ describe('filterRequiredProperties', () => {
             properties: {
               id: {
                 writeOnly: true,
-                type: 'string'
+                type: 'string',
               },
               name: {
-                type: 'string'
-              }
-            }
-          }
+                type: 'string',
+              },
+            },
+          },
         },
         title: { type: 'string', writeOnly: true },
         address: { type: 'integer' },
@@ -119,7 +119,7 @@ describe('filterRequiredProperties', () => {
     };
 
     assertSome(stripWriteOnlyProperties(schema), schema => {
-      expect(schema.properties).not.toBeNull()
+      expect(schema.properties).not.toBeNull();
       if (schema.properties) {
         const arr_items = (schema.properties.objectsArray as JSONSchema).items as JSONSchema;
 
@@ -148,29 +148,29 @@ describe('filterRequiredProperties', () => {
         objectsArrayAdditionalItemsUnspecified: {
           type: 'array',
           items: [
-            { 
-              type: 'object', 
-              required: ['id', 'name'], 
-              properties: { 
-                id: { readOnly: true, type: 'string' }, 
-                name: { type: 'string' } 
-              } 
+            {
+              type: 'object',
+              required: ['id', 'name'],
+              properties: {
+                id: { readOnly: true, type: 'string' },
+                name: { type: 'string' },
+              },
             },
-            { 
-              type: 'object', 
-              required: ['address', 'title'], 
-              properties: { 
-                address: { readOnly: true, type: 'string' }, 
-                title: { type: 'string' } 
-              } 
-            }
-          ]
+            {
+              type: 'object',
+              required: ['address', 'title'],
+              properties: {
+                address: { readOnly: true, type: 'string' },
+                title: { type: 'string' },
+              },
+            },
+          ],
         },
-      }
+      },
     };
 
     assertSome(stripReadOnlyProperties(schema), schema => {
-      expect(schema.properties).not.toBeNull()
+      expect(schema.properties).not.toBeNull();
       if (schema.properties) {
         const arr_items = (schema.properties.objectsArrayAdditionalItemsUnspecified as JSONSchema).items;
 
@@ -198,29 +198,29 @@ describe('filterRequiredProperties', () => {
         objectsArrayAdditionalItemsUnspecified: {
           type: 'array',
           items: [
-            { 
-              type: 'object', 
-              required: ['id', 'name'], 
-              properties: { 
-                id: { writeOnly: true, type: 'string' }, 
-                name: { type: 'string' } 
-              } 
+            {
+              type: 'object',
+              required: ['id', 'name'],
+              properties: {
+                id: { writeOnly: true, type: 'string' },
+                name: { type: 'string' },
+              },
             },
-            { 
-              type: 'object', 
-              required: ['address', 'title'], 
-              properties: { 
-                address: { writeOnly: true, type: 'string' }, 
-                title: { type: 'string' } 
-              } 
-            }
-          ]
+            {
+              type: 'object',
+              required: ['address', 'title'],
+              properties: {
+                address: { writeOnly: true, type: 'string' },
+                title: { type: 'string' },
+              },
+            },
+          ],
         },
-      }
+      },
     };
 
     assertSome(stripWriteOnlyProperties(schema), schema => {
-      expect(schema.properties).not.toBeNull()
+      expect(schema.properties).not.toBeNull();
       if (schema.properties) {
         const arr_items = (schema.properties.objectsArrayAdditionalItemsUnspecified as JSONSchema).items;
 
@@ -248,57 +248,57 @@ describe('filterRequiredProperties', () => {
         objectsArrayWithAdditionalItems: {
           type: 'array',
           items: [
-            { 
-              type: 'object', 
-              required: ['id', 'name'], 
-              properties: { 
-                id: { readOnly: true, type: 'string' }, 
-                name: { type: 'string' } 
-              } 
+            {
+              type: 'object',
+              required: ['id', 'name'],
+              properties: {
+                id: { readOnly: true, type: 'string' },
+                name: { type: 'string' },
+              },
             },
-            { 
-              type: 'object', 
-              required: ['address', 'title'], 
-              properties: { 
-                address: { readOnly: true, type: 'string' }, 
-                title: { type: 'string' } 
-              } 
-            }
+            {
+              type: 'object',
+              required: ['address', 'title'],
+              properties: {
+                address: { readOnly: true, type: 'string' },
+                title: { type: 'string' },
+              },
+            },
           ],
           additionalItems: {
             type: 'object',
             properties: {
               status: { readOnly: true, type: 'string' },
-              ticket: { type: 'string' } 
+              ticket: { type: 'string' },
             },
-            required: ['status', 'ticket']
-          }
-        }
-      }
+            required: ['status', 'ticket'],
+          },
+        },
+      },
     };
 
     assertSome(stripReadOnlyProperties(schema), schema => {
-      expect(schema.properties).not.toBeNull()
+      expect(schema.properties).not.toBeNull();
       if (schema.properties) {
         const arr = schema.properties.objectsArrayWithAdditionalItems as JSONSchema;
-        
+
         expect(arr.items).not.toBeNull();
         expect(arr.items).not.toBeUndefined();
 
         const arr_items = arr.items as JSONSchema;
         expect(arr_items[0].required).toEqual(['name']);
         expect(arr_items[0].properties).toEqual({
-          name: expect.any(Object)
+          name: expect.any(Object),
         });
         expect(arr_items[1].required).toEqual(['title']);
         expect(arr_items[1].properties).toEqual({
-          title: expect.any(Object)
+          title: expect.any(Object),
         });
 
         expect(arr.additionalItems).not.toBeNull();
-        const additional_items = arr.additionalItems as JSONSchema
+        const additional_items = arr.additionalItems as JSONSchema;
         expect(additional_items.properties).toEqual({
-          ticket: expect.any(Object)
+          ticket: expect.any(Object),
         });
         expect(additional_items.required).toEqual(['ticket']);
       }
@@ -312,57 +312,57 @@ describe('filterRequiredProperties', () => {
         objectsArrayWithAdditionalItems: {
           type: 'array',
           items: [
-            { 
-              type: 'object', 
-              required: ['id', 'name'], 
-              properties: { 
-                id: { writeOnly: true, type: 'string' }, 
-                name: { type: 'string' } 
-              } 
+            {
+              type: 'object',
+              required: ['id', 'name'],
+              properties: {
+                id: { writeOnly: true, type: 'string' },
+                name: { type: 'string' },
+              },
             },
-            { 
-              type: 'object', 
-              required: ['address', 'title'], 
-              properties: { 
-                address: { writeOnly: true, type: 'string' }, 
-                title: { type: 'string' } 
-              } 
-            }
+            {
+              type: 'object',
+              required: ['address', 'title'],
+              properties: {
+                address: { writeOnly: true, type: 'string' },
+                title: { type: 'string' },
+              },
+            },
           ],
           additionalItems: {
             type: 'object',
             properties: {
               status: { writeOnly: true, type: 'string' },
-              ticket: { type: 'string' } 
+              ticket: { type: 'string' },
             },
-            required: ['status', 'ticket']
-          }
-        }
-      }
+            required: ['status', 'ticket'],
+          },
+        },
+      },
     };
 
     assertSome(stripWriteOnlyProperties(schema), schema => {
-      expect(schema.properties).not.toBeNull()
+      expect(schema.properties).not.toBeNull();
       if (schema.properties) {
         const arr = schema.properties.objectsArrayWithAdditionalItems as JSONSchema;
-        
+
         expect(arr.items).not.toBeNull();
         expect(arr.items).not.toBeUndefined();
 
         const arr_items = arr.items as JSONSchema;
         expect(arr_items[0].required).toEqual(['name']);
         expect(arr_items[0].properties).toEqual({
-          name: expect.any(Object)
+          name: expect.any(Object),
         });
         expect(arr_items[1].required).toEqual(['title']);
         expect(arr_items[1].properties).toEqual({
-          title: expect.any(Object)
+          title: expect.any(Object),
         });
 
         expect(arr.additionalItems).not.toBeNull();
-        const additional_items = arr.additionalItems as JSONSchema
+        const additional_items = arr.additionalItems as JSONSchema;
         expect(additional_items.properties).toEqual({
-          ticket: expect.any(Object)
+          ticket: expect.any(Object),
         });
         expect(additional_items.required).toEqual(['ticket']);
       }
@@ -376,44 +376,44 @@ describe('filterRequiredProperties', () => {
         objectsArrayNoAdditionalItems: {
           type: 'array',
           items: [
-            { 
-              type: 'object', 
-              required: ['id', 'name'], 
-              properties: { 
-                id: { readOnly: true, type: 'string' }, 
-                name: { type: 'string' } 
-              } 
+            {
+              type: 'object',
+              required: ['id', 'name'],
+              properties: {
+                id: { readOnly: true, type: 'string' },
+                name: { type: 'string' },
+              },
             },
-            { 
-              type: 'object', 
-              required: ['address', 'title'], 
-              properties: { 
-                address: { readOnly: true, type: 'string' }, 
-                title: { type: 'string' } 
-              } 
-            }
+            {
+              type: 'object',
+              required: ['address', 'title'],
+              properties: {
+                address: { readOnly: true, type: 'string' },
+                title: { type: 'string' },
+              },
+            },
           ],
-          additionalItems: false
+          additionalItems: false,
         },
-      }
+      },
     };
 
     assertSome(stripReadOnlyProperties(schema), schema => {
-      expect(schema.properties).not.toBeNull()
+      expect(schema.properties).not.toBeNull();
       if (schema.properties) {
         const arr = schema.properties.objectsArrayNoAdditionalItems as JSONSchema;
-        
+
         expect(arr.items).not.toBeNull();
         expect(arr.items).not.toBeUndefined();
 
         const arr_items = arr.items as JSONSchema;
         expect(arr_items[0].required).toEqual(['name']);
         expect(arr_items[0].properties).toEqual({
-          name: expect.any(Object)
+          name: expect.any(Object),
         });
         expect(arr_items[1].required).toEqual(['title']);
         expect(arr_items[1].properties).toEqual({
-          title: expect.any(Object)
+          title: expect.any(Object),
         });
 
         expect(arr.additionalItems).toEqual(false);
@@ -428,42 +428,44 @@ describe('filterRequiredProperties', () => {
         objectsArrayNoAdditionalItems: {
           type: 'array',
           items: [
-            { 
-              type: 'object', 
-              required: ['id', 'name'], 
-              properties: { 
-                id: { writeOnly: true, type: 'string' }, 
-                name: { type: 'string' } } 
+            {
+              type: 'object',
+              required: ['id', 'name'],
+              properties: {
+                id: { writeOnly: true, type: 'string' },
+                name: { type: 'string' },
+              },
             },
-            { 
-              type: 'object', 
-              required: ['address', 'title'], 
-              properties: { 
-                address: { writeOnly: true, type: 'string' }, 
-                title: { type: 'string' } } 
-            }
+            {
+              type: 'object',
+              required: ['address', 'title'],
+              properties: {
+                address: { writeOnly: true, type: 'string' },
+                title: { type: 'string' },
+              },
+            },
           ],
-          additionalItems: false
+          additionalItems: false,
         },
-      }
+      },
     };
 
     assertSome(stripWriteOnlyProperties(schema), schema => {
-      expect(schema.properties).not.toBeNull()
+      expect(schema.properties).not.toBeNull();
       if (schema.properties) {
         const arr = schema.properties.objectsArrayNoAdditionalItems as JSONSchema;
-        
+
         expect(arr.items).not.toBeNull();
         expect(arr.items).not.toBeUndefined();
 
         const arr_items = arr.items as JSONSchema;
         expect(arr_items[0].required).toEqual(['name']);
         expect(arr_items[0].properties).toEqual({
-          name: expect.any(Object)
+          name: expect.any(Object),
         });
         expect(arr_items[1].required).toEqual(['title']);
         expect(arr_items[1].properties).toEqual({
-          title: expect.any(Object)
+          title: expect.any(Object),
         });
 
         expect(arr.additionalItems).toEqual(false);

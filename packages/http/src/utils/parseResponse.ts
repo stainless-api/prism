@@ -12,7 +12,8 @@ export const parseResponseBody = (
 ): TE.TaskEither<Error, unknown> =>
   TE.tryCatch(
     () =>
-      (response.status != 204 && typeIs(response.headers.get('content-type') || '', ['application/json', 'application/*+json']))
+      response.status != 204 &&
+      typeIs(response.headers.get('content-type') || '', ['application/json', 'application/*+json'])
         ? response.json()
         : response.text(),
     E.toError

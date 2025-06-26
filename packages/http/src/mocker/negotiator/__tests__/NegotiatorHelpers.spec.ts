@@ -844,23 +844,27 @@ describe('NegotiatorHelpers', () => {
     const partialOptions = { code: '200', dynamic: false };
 
     describe('and json is among them', () => {
-      const negotiationResult = helpers.negotiateDefaultMediaType(partialOptions, {
-        id: faker.random.word(),
-        code,
-        headers: [],
-        contents: [
-          {
-            id: faker.random.word(),
-            mediaType: 'text/plain',
-            examples: [{ id: faker.random.word(), key: 'hey', value: {} }],
-          },
-          {
-            id: faker.random.word(),
-            mediaType: 'application/json',
-            examples: [{ id: faker.random.word(), key: 'hey', value: {} }],
-          },
-        ],
-      }, logger);
+      const negotiationResult = helpers.negotiateDefaultMediaType(
+        partialOptions,
+        {
+          id: faker.random.word(),
+          code,
+          headers: [],
+          contents: [
+            {
+              id: faker.random.word(),
+              mediaType: 'text/plain',
+              examples: [{ id: faker.random.word(), key: 'hey', value: {} }],
+            },
+            {
+              id: faker.random.word(),
+              mediaType: 'application/json',
+              examples: [{ id: faker.random.word(), key: 'hey', value: {} }],
+            },
+          ],
+        },
+        logger
+      );
 
       it('should give json precedence', () => {
         assertRight(negotiationResult, result => {
@@ -870,23 +874,27 @@ describe('NegotiatorHelpers', () => {
     });
 
     describe('and json is not them', () => {
-      const negotiationResult = helpers.negotiateDefaultMediaType(partialOptions, {
-        id: faker.random.word(),
-        code,
-        headers: [],
-        contents: [
-          {
-            id: faker.random.word(),
-            mediaType: 'application/xml',
-            examples: [{ id: faker.random.word(), key: 'hey', value: {} }],
-          },
-          {
-            id: faker.random.word(),
-            mediaType: 'text/plain',
-            examples: [{ id: faker.random.word(), key: 'hey', value: {} }],
-          },
-        ],
-      }, logger);
+      const negotiationResult = helpers.negotiateDefaultMediaType(
+        partialOptions,
+        {
+          id: faker.random.word(),
+          code,
+          headers: [],
+          contents: [
+            {
+              id: faker.random.word(),
+              mediaType: 'application/xml',
+              examples: [{ id: faker.random.word(), key: 'hey', value: {} }],
+            },
+            {
+              id: faker.random.word(),
+              mediaType: 'text/plain',
+              examples: [{ id: faker.random.word(), key: 'hey', value: {} }],
+            },
+          ],
+        },
+        logger
+      );
 
       it('should take the first content type', () => {
         assertRight(negotiationResult, result => {
@@ -919,7 +927,11 @@ describe('negotiateByPartialOptionsAndHttpContent()', () => {
         encodings: [],
       };
 
-      const actualOperationConfig = helpers.negotiateByPartialOptionsAndHttpContent(partialOptions, httpContent, logger);
+      const actualOperationConfig = helpers.negotiateByPartialOptionsAndHttpContent(
+        partialOptions,
+        httpContent,
+        logger
+      );
 
       const expectedConfig: Omit<IHttpNegotiationResult, 'headers'> = {
         code: partialOptions.code,
@@ -967,7 +979,11 @@ describe('negotiateByPartialOptionsAndHttpContent()', () => {
         encodings: [],
       };
 
-      const actualOperationConfig = helpers.negotiateByPartialOptionsAndHttpContent(partialOptions, httpContent, logger);
+      const actualOperationConfig = helpers.negotiateByPartialOptionsAndHttpContent(
+        partialOptions,
+        httpContent,
+        logger
+      );
 
       assertRight(actualOperationConfig, operationConfig => {
         expect(operationConfig).toEqual({
@@ -1027,7 +1043,11 @@ describe('negotiateByPartialOptionsAndHttpContent()', () => {
         encodings: [],
       };
 
-      const actualOperationConfig = helpers.negotiateByPartialOptionsAndHttpContent(partialOptions, httpContent, logger);
+      const actualOperationConfig = helpers.negotiateByPartialOptionsAndHttpContent(
+        partialOptions,
+        httpContent,
+        logger
+      );
       const expectedConfig: Omit<IHttpNegotiationResult, 'headers'> = {
         code: partialOptions.code,
         mediaType: httpContent.mediaType,
@@ -1052,7 +1072,11 @@ describe('negotiateByPartialOptionsAndHttpContent()', () => {
         encodings: [],
       };
 
-      const actualOperationConfig = helpers.negotiateByPartialOptionsAndHttpContent(partialOptions, httpContent, logger);
+      const actualOperationConfig = helpers.negotiateByPartialOptionsAndHttpContent(
+        partialOptions,
+        httpContent,
+        logger
+      );
 
       assertRight(actualOperationConfig, operationConfig => {
         expect(operationConfig).toEqual({
