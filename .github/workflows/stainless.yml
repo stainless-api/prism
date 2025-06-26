@@ -16,7 +16,7 @@ jobs:
           yarn install
       - name: Run linter
         run: |
-          yarn lint packages/cli
+          yarn lint
       - name: Run tests
         run: |
-          yarn test packages/cli
+          yarn test
