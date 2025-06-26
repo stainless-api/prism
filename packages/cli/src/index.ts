@@ -5,7 +5,7 @@ import * as yargs from 'yargs';
 import mockCommand from './commands/mock';
 import proxyCommand from './commands/proxy';
 
-yargs
+void yargs
   .scriptName('prism')
   .version()
   .help(true)

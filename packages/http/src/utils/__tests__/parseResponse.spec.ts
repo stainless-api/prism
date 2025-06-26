@@ -55,7 +55,6 @@ describe('parseResponseBody()', () => {
           headers: new Headers(),
           json: jest.fn(),
           text: jest.fn().mockRejectedValue(new Error('Big Bada Boom')),
-
         };
 
         expect(response.json).not.toHaveBeenCalled();

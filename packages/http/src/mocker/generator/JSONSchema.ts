@@ -77,9 +77,11 @@ export function generate(
         // @ts-ignore
         () => {
           if (seed) {
-            JSONSchemaFaker.option('random', seedrandom(seed))
+            JSONSchemaFaker.option('random', seedrandom(seed));
           }
-          return sortSchemaAlphabetically(JSONSchemaFaker.generate({ ...cloneDeep(updatedSource), __bundled__: bundle }))
+          return sortSchemaAlphabetically(
+            JSONSchemaFaker.generate({ ...cloneDeep(updatedSource), __bundled__: bundle })
+          );
         },
         toError
       )
@@ -124,7 +126,10 @@ export function generateStatic(operation: IHttpOperation, source: JSONSchema): E
 export class GeneratorError extends Error {}
 
 export class SchemaTooComplexGeneratorError extends GeneratorError {
-  constructor(operation: IHttpOperation, public readonly cause: Error) {
+  constructor(
+    operation: IHttpOperation,
+    public readonly cause: Error
+  ) {
     super(
       `The operation ${operation.method.toUpperCase()} ${
         operation.path

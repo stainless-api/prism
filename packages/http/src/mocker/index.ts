@@ -19,7 +19,7 @@ import { sequenceT } from 'fp-ts/Apply';
 import * as R from 'fp-ts/Reader';
 import * as O from 'fp-ts/Option';
 import * as RE from 'fp-ts/ReaderEither';
-import { get, groupBy, isNumber, isString, keyBy, mapValues, partial, pick } from 'lodash';
+import { get, groupBy, isNumber, isString, keyBy, mapValues, pick } from 'lodash';
 import { Logger } from 'pino';
 import { is } from 'type-is';
 import {
@@ -61,8 +61,8 @@ const mock: IPrismComponents<IHttpOperation, IHttpRequest, IHttpResponse, IHttpM
   function createPayloadGenerator(config: IHttpOperationConfig, resource: IHttpOperation): PayloadGenerator {
     return (source: JSONSchema) => {
       return config.dynamic
-      ? generate(resource, resource['__bundled__'], source, config.seed)
-      : generateStatic(resource, source);
+        ? generate(resource, resource['__bundled__'], source, config.seed)
+        : generateStatic(resource, source);
     };
   }
   const payloadGenerator = createPayloadGenerator(config, resource);
@@ -163,7 +163,7 @@ function parseBodyIfUrlEncoded(request: IHttpRequest, resource: IHttpOperation) 
     mediaType === 'multipart/form-data'
       ? parseMultipartFormDataParams(requestBody, multipartBoundary)
       : splitUriParams(requestBody),
-    E.getOrElse<IPrismDiagnostic[], Dictionary<string>>(() => ({} as Dictionary<string>))
+    E.getOrElse<IPrismDiagnostic[], Dictionary<string>>(() => ({}) as Dictionary<string>)
   );
 
   if (specs.length < 1) {
@@ -288,7 +288,9 @@ function negotiateResponse(
   } else {
     return pipe(
       withLogger(logger => {
-        warnings && warnings.forEach(warn => logger.warn({ name: 'VALIDATOR' }, warn.message));
+        if (warnings) {
+          warnings.forEach(warn => logger.warn({ name: 'VALIDATOR' }, warn.message));
+        }
         return logger.success(
           { name: 'VALIDATOR' },
           'The request passed the validation rules. Looking for the best response'

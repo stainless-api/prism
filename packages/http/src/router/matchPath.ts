@@ -19,7 +19,7 @@ export function isTemplated(pathFragment: string) {
 function decodePathFragment(pathFragment: string) {
   try {
     return pathFragment && decodeURIComponent(pathFragment);
-  } catch (_) {
+  } catch {
     return pathFragment;
   }
 }
