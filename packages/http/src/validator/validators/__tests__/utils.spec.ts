@@ -2,7 +2,7 @@ import { DiagnosticSeverity } from '@stoplight/types';
 import * as convertAjvErrorsModule from '../utils';
 import { convertAjvErrors, validateAgainstSchema } from '../utils';
 import type { ErrorObject } from 'ajv';
-import { assertSome, assertNone } from '@stoplight/prism-core/src/__tests__/utils';
+import { assertSome, assertNone } from '@stainless-api/prism-core/src/__tests__/utils';
 import type { JSONSchema7 } from 'json-schema';
 import { ValidationContext } from '../types';
 

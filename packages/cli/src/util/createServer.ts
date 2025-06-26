@@ -1,6 +1,6 @@
-import { createLogger } from '@stoplight/prism-core';
-import { IHttpConfig, IHttpRequest } from '@stoplight/prism-http';
-import { createServer as createHttpServer } from '@stoplight/prism-http-server';
+import { createLogger } from '@stainless-api/prism-core';
+import { IHttpConfig, IHttpRequest } from '@stainless-api/prism-http';
+import { createServer as createHttpServer } from '@stainless-api/prism-http-server';
 import * as chalk from 'chalk';
 import * as cluster from 'cluster';
 import * as E from 'fp-ts/Either';
@@ -11,7 +11,7 @@ import * as split from 'split2';
 import { PassThrough, Readable } from 'stream';
 import { LOG_COLOR_MAP } from '../const/options';
 import { CreatePrism } from './runner';
-import { getHttpOperationsFromSpec } from '@stoplight/prism-http';
+import { getHttpOperationsFromSpec } from '@stainless-api/prism-http';
 import { createExamplePath } from './paths';
 import { attachTagsToParamsValues, transformPathParamsValues } from './colorizer';
 import { configureExtensionsUserProvided } from '../extensions';

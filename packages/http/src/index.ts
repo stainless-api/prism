@@ -1,4 +1,4 @@
-import { factory } from '@stoplight/prism-core';
+import { factory } from '@stainless-api/prism-core';
 import { IHttpOperation } from '@stoplight/types';
 import { defaults } from 'lodash';
 import forward from './forwarder';

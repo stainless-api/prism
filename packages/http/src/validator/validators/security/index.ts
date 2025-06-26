@@ -7,7 +7,7 @@ import { set } from 'lodash/fp';
 import { findSecurityHandler, noneSecurityHandler } from './handlers';
 import { NonEmptyArray, getSemigroup } from 'fp-ts/NonEmptyArray';
 import { isNonEmpty, sequence } from 'fp-ts/Array';
-import { IPrismDiagnostic, ValidatorFn } from '@stoplight/prism-core';
+import { IPrismDiagnostic, ValidatorFn } from '@stainless-api/prism-core';
 import { IHttpRequest } from '../../../types';
 
 type HeadersAndUrl = Pick<IHttpRequest, 'headers' | 'url'>;

@@ -5,12 +5,12 @@ import {
   ProblemJsonError,
   VIOLATIONS,
   IHttpConfig,
-} from '@stoplight/prism-http';
+} from '@stainless-api/prism-http';
 import { DiagnosticSeverity, HttpMethod, IHttpOperation, Dictionary } from '@stoplight/types';
 import { IncomingMessage, ServerResponse, IncomingHttpHeaders } from 'http';
 import { AddressInfo } from 'net';
 import { IPrismHttpServer, IPrismHttpServerOpts } from './types';
-import { IPrismDiagnostic } from '@stoplight/prism-core';
+import { IPrismDiagnostic } from '@stainless-api/prism-core';
 import { MicriHandler } from 'micri';
 import micri, { Router, json, send, text } from 'micri';
 import * as typeIs from 'type-is';

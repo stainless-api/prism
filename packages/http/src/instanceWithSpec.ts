@@ -4,7 +4,7 @@ import { IHttpConfig, IHttpRequest, IHttpResponse } from './types';
 import type { Logger } from 'pino';
 import { pipe } from 'fp-ts/function';
 import { isRight, isLeft } from 'fp-ts/lib/Either';
-import { IPrismOutput } from '@stoplight/prism-core';
+import { IPrismOutput } from '@stainless-api/prism-core';
 
 export type PrismOkResult = {
   result: 'ok';

@@ -1,4 +1,4 @@
-import { IPrismOutput } from '@stoplight/prism-core';
+import { IPrismOutput } from '@stainless-api/prism-core';
 import { IHttpOperation } from '@stoplight/types';
 import { defaults } from 'lodash';
 import { parse as parseQueryString } from 'querystring';

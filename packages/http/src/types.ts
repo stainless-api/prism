@@ -1,4 +1,4 @@
-import { IPrism, IPrismComponents, IPrismProxyConfig, IPrismMockConfig } from '@stoplight/prism-core';
+import { IPrism, IPrismComponents, IPrismProxyConfig, IPrismMockConfig } from '@stainless-api/prism-core';
 import { Overwrite } from 'utility-types';
 import { Dictionary, HttpMethod, IHttpOperation, INodeExample, INodeExternalExample } from '@stoplight/types';
 import type { JSONSchema7 } from 'json-schema';

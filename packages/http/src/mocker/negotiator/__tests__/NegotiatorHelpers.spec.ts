@@ -1,4 +1,4 @@
-import { createLogger } from '@stoplight/prism-core';
+import { createLogger } from '@stainless-api/prism-core';
 import {
   IHttpOperation,
   IHttpOperationResponse,
@@ -9,7 +9,7 @@ import {
 import * as faker from '@faker-js/faker/locale/en';
 import * as E from 'fp-ts/Either';
 import { left, right } from 'fp-ts/ReaderEither';
-import { assertRight, assertLeft } from '@stoplight/prism-core/src/__tests__/utils';
+import { assertRight, assertLeft } from '@stainless-api/prism-core/src/__tests__/utils';
 import helpers from '../NegotiatorHelpers';
 import { IHttpNegotiationResult, NegotiationOptions } from '../types';
 import { NonEmptyArray } from 'fp-ts/NonEmptyArray';

@@ -1,4 +1,4 @@
-import { IPrismDiagnostic } from '@stoplight/prism-core';
+import { IPrismDiagnostic } from '@stainless-api/prism-core';
 import { DiagnosticSeverity, Dictionary, IHttpEncoding, IMediaTypeContent } from '@stoplight/types';
 import * as A from 'fp-ts/Array';
 import * as E from 'fp-ts/Either';

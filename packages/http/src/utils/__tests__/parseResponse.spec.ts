@@ -1,5 +1,5 @@
 import { parseResponse, parseResponseBody, parseResponseHeaders } from '../parseResponse';
-import { assertResolvesLeft, assertResolvesRight } from '@stoplight/prism-core/src/__tests__/utils';
+import { assertResolvesLeft, assertResolvesRight } from '@stainless-api/prism-core/src/__tests__/utils';
 import { Headers } from 'node-fetch';
 
 describe('parseResponseBody()', () => {

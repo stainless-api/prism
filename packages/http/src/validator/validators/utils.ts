@@ -1,4 +1,4 @@
-import { IPrismDiagnostic } from '@stoplight/prism-core';
+import { IPrismDiagnostic } from '@stainless-api/prism-core';
 import { DiagnosticSeverity } from '@stoplight/types';
 import * as O from 'fp-ts/Option';
 import { pipe } from 'fp-ts/function';

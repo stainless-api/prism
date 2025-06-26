@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 import forward from '../index';
-import { assertResolvesRight, assertResolvesLeft } from '@stoplight/prism-core/src/__tests__/utils';
+import { assertResolvesRight, assertResolvesLeft } from '@stainless-api/prism-core/src/__tests__/utils';
 import { keyBy, mapValues } from 'lodash';
 import { hopByHopHeaders } from '../resources';
 import { DiagnosticSeverity, Dictionary } from '@stoplight/types';

@@ -1,13 +1,13 @@
 {
-  "name": "@stoplight/prism-http-server",
+  "name": "@stainless-api/prism-http-server",
   "version": "5.13.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "author": "Stoplight <support@stoplight.io>",
+  "author": "Stainless <dev@stainlessapi.com>",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/stoplightio/prism.git"
+    "url": "https://github.com/stainless-api/prism.git"
   },
   "engines": {
     "node": ">=18.20.1"
@@ -19,8 +19,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@stoplight/prism-core": "^5.11.0",
-    "@stoplight/prism-http": "^5.13.2",
+    "@stainless-api/prism-core": "^5.11.0",
+    "@stainless-api/prism-http": "^5.13.2",
     "@stoplight/types": "^14.1.0",
     "fast-xml-parser": "^4.2.0",
     "fp-ts": "^2.11.5",

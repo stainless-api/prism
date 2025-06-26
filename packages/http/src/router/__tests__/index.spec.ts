@@ -1,5 +1,5 @@
 import * as faker from '@faker-js/faker/locale/en';
-import { assertLeft, assertRight } from '@stoplight/prism-core/src/__tests__/utils';
+import { assertLeft, assertRight } from '@stainless-api/prism-core/src/__tests__/utils';
 import { HttpMethod, IHttpOperation, IServer } from '@stoplight/types';
 import { isRight } from 'fp-ts/Either';
 import { ProblemJsonError } from '../../';

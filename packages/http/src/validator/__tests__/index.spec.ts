@@ -1,10 +1,10 @@
-import { IPrismDiagnostic } from '@stoplight/prism-core';
+import { IPrismDiagnostic } from '@stainless-api/prism-core';
 import { DiagnosticSeverity, IHttpOperation, HttpParamStyles, IMediaTypeContent } from '@stoplight/types';
 import * as E from 'fp-ts/Either';
 import { IHttpRequest } from '../../types';
 import * as validators from '../validators';
 import * as validator from '../';
-import { assertRight, assertLeft } from '@stoplight/prism-core/src/__tests__/utils';
+import { assertRight, assertLeft } from '@stainless-api/prism-core/src/__tests__/utils';
 import { ValidationContext } from '../validators/types';
 import * as faker from '@faker-js/faker/locale/en';
 

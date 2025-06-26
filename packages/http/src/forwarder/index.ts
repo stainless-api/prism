@@ -1,4 +1,4 @@
-import { IPrismComponents, IPrismInput } from '@stoplight/prism-core';
+import { IPrismComponents, IPrismInput } from '@stainless-api/prism-core';
 import { IHttpOperation } from '@stoplight/types';
 import fetch, { Response } from 'node-fetch';
 import { constUndefined, pipe } from 'fp-ts/function';

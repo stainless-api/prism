@@ -1,7 +1,7 @@
 import { HttpParamStyles } from '@stoplight/types';
 import { validate } from '../path';
 import * as validateAgainstSchemaModule from '../utils';
-import { assertLeft, assertRight } from '@stoplight/prism-core/src/__tests__/utils';
+import { assertLeft, assertRight } from '@stainless-api/prism-core/src/__tests__/utils';
 import * as O from 'fp-ts/Option';
 import * as faker from '@faker-js/faker/locale/en';
 import { ValidationContext } from '../types';

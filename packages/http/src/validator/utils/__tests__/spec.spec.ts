@@ -1,4 +1,4 @@
-import { assertNone, assertSome } from '@stoplight/prism-core/src/__tests__/utils';
+import { assertNone, assertSome } from '@stainless-api/prism-core/src/__tests__/utils';
 import { findOperationResponse } from '../spec';
 import * as faker from '@faker-js/faker/locale/en';
 

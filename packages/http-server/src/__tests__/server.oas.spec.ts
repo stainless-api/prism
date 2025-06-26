@@ -1,6 +1,6 @@
-import { createLogger } from '@stoplight/prism-core';
-import { getHttpOperationsFromSpec } from '@stoplight/prism-http';
-import { IHttpConfig, IHttpMockConfig } from '@stoplight/prism-http';
+import { createLogger } from '@stainless-api/prism-core';
+import { getHttpOperationsFromSpec } from '@stainless-api/prism-http';
+import { IHttpConfig, IHttpMockConfig } from '@stainless-api/prism-http';
 import { resolve } from 'path';
 import { merge } from 'lodash';
 import fetch, { RequestInit } from 'node-fetch';

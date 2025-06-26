@@ -1,7 +1,7 @@
 import { get } from 'lodash';
 import { JSONSchema } from '../../../types';
 import { generate, sortSchemaAlphabetically } from '../JSONSchema';
-import { assertRight, assertLeft } from '@stoplight/prism-core/src/__tests__/utils';
+import { assertRight, assertLeft } from '@stainless-api/prism-core/src/__tests__/utils';
 import { IHttpOperation } from '@stoplight/types';
 
 describe('JSONSchema generator', () => {

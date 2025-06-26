@@ -9,7 +9,7 @@ import { JSONSchema4 } from 'json-schema';
 import { JSONSchema } from '../../';
 import { validateAgainstSchema } from './utils';
 import type { deserializeFn } from '../deserializers/types';
-import type { IPrismDiagnostic } from '@stoplight/prism-core';
+import type { IPrismDiagnostic } from '@stainless-api/prism-core';
 import { ValidationContext } from './types';
 
 export type Deps<Target> = {

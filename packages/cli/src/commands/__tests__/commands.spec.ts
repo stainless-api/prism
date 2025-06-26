@@ -1,4 +1,4 @@
-import * as operationUtils from '@stoplight/prism-http';
+import * as operationUtils from '@stainless-api/prism-http';
 import * as yargs from 'yargs';
 import { createMultiProcessPrism, createSingleProcessPrism } from '../../util/createServer';
 import mockCommand from '../mock';

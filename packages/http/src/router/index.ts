@@ -1,4 +1,4 @@
-import { IPrismComponents } from '@stoplight/prism-core';
+import { IPrismComponents } from '@stainless-api/prism-core';
 import { IHttpOperation, IServer } from '@stoplight/types';
 import * as E from 'fp-ts/Either';
 import * as A from 'fp-ts/Array';
