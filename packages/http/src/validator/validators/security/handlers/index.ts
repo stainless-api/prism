@@ -6,7 +6,7 @@ import { none } from './none';
 import { HttpSecurityScheme, DiagnosticSeverity } from '@stoplight/types';
 import { ValidateSecurityFn } from './utils';
 import { Either, fromNullable } from 'fp-ts/Either';
-import { IPrismDiagnostic } from '@stoplight/prism-core';
+import { IPrismDiagnostic } from '@stainless-api/prism-core';
 
 const securitySchemeHandlers: {
   openIdConnect: ValidateSecurityFn;

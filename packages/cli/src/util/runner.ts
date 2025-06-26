@@ -1,8 +1,8 @@
-import type { IPrismHttpServer } from '@stoplight/prism-http-server/src/types';
+import type { IPrismHttpServer } from '@stainless-api/prism-http-server/src/types';
 import * as chokidar from 'chokidar';
 import * as os from 'os';
 import { CreateMockServerOptions } from './createServer';
-import { getHttpOperationsFromSpec } from '@stoplight/prism-http';
+import { getHttpOperationsFromSpec } from '@stainless-api/prism-http';
 
 export type CreatePrism = (options: CreateMockServerOptions) => Promise<IPrismHttpServer | void>;
 

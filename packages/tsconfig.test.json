@@ -3,10 +3,10 @@
     "resolveJsonModule": true,
     "noEmit": true,
     "paths": {
-      "@stoplight/prism-core": ["./core/src"],
-      "@stoplight/prism-cli": ["./cli/src"],
-      "@stoplight/prism-http": ["./http/src"],
-      "@stoplight/prism-http-server": ["./http-server/src"]
+      "@stainless-api/prism-core": ["./core/src"],
+      "@stainless-api/prism-cli": ["./cli/src"],
+      "@stainless-api/prism-http": ["./http/src"],
+      "@stainless-api/prism-http-server": ["./http-server/src"]
     }
   },
   "extends": "./tsconfig.json",

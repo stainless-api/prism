@@ -1,4 +1,4 @@
-import { createLogger } from '@stoplight/prism-core';
+import { createLogger } from '@stainless-api/prism-core';
 import { IHttpOperation } from '@stoplight/types';
 import fetch, { RequestInit } from 'node-fetch';
 import { createServer } from '../';

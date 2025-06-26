@@ -1,4 +1,4 @@
-import { IPrismDiagnostic, ValidatorFn } from '@stoplight/prism-core';
+import { IPrismDiagnostic, ValidatorFn } from '@stainless-api/prism-core';
 import {
   DiagnosticSeverity,
   Dictionary,

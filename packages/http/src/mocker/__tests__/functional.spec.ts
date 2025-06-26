@@ -1,8 +1,8 @@
 import Ajv from 'ajv';
 
-import { createLogger } from '@stoplight/prism-core';
+import { createLogger } from '@stainless-api/prism-core';
 import { httpOperations, httpRequests, httpOperationsByRef } from '../../__tests__/fixtures';
-import { assertLeft, assertRight } from '@stoplight/prism-core/src/__tests__/utils';
+import { assertLeft, assertRight } from '@stainless-api/prism-core/src/__tests__/utils';
 import mock from '../index';
 
 const logger = createLogger('TEST', { enabled: false });

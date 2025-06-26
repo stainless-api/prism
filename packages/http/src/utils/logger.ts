@@ -1,6 +1,6 @@
 import withLogger from '../withLogger';
 import { Dictionary, DiagnosticSeverity } from '@stoplight/types';
-import { IPrismDiagnostic } from '@stoplight/prism-core';
+import { IPrismDiagnostic } from '@stainless-api/prism-core';
 import { Logger } from 'pino';
 import { RequestInit, Response } from 'node-fetch';
 import { pipe } from 'fp-ts/lib/function';

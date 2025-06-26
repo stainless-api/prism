@@ -1,4 +1,4 @@
-import { IHttpOperationConfig, IHttpRequest, ProblemJsonError, UNPROCESSABLE_ENTITY } from '@stoplight/prism-http';
+import { IHttpOperationConfig, IHttpRequest, ProblemJsonError, UNPROCESSABLE_ENTITY } from '@stainless-api/prism-http';
 import { pipe } from 'fp-ts/function';
 import * as E from 'fp-ts/Either';
 import * as D from 'io-ts/lib/Decoder';

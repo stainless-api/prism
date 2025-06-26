@@ -1,4 +1,4 @@
-import { createLogger, IPrism } from '@stoplight/prism-core';
+import { createLogger, IPrism } from '@stainless-api/prism-core';
 import { IHttpOperation } from '@stoplight/types';
 import { Scope as NockScope } from 'nock';
 import * as nock from 'nock';
@@ -7,7 +7,7 @@ import { createInstance, IHttpProxyConfig, IHttpRequest, IHttpResponse, ProblemJ
 import { getHttpOperationsFromSpec } from '../';
 import { UNPROCESSABLE_ENTITY } from '../mocker/errors';
 import { NO_PATH_MATCHED_ERROR, NO_SERVER_MATCHED_ERROR } from '../router/errors';
-import { assertResolvesRight, assertResolvesLeft } from '@stoplight/prism-core/src/__tests__/utils';
+import { assertResolvesRight, assertResolvesLeft } from '@stainless-api/prism-core/src/__tests__/utils';
 
 const logger = createLogger('TEST', { enabled: false });
 

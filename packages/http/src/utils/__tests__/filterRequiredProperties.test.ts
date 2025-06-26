@@ -1,6 +1,6 @@
 import { JSONSchema } from '../../types';
 import { stripReadOnlyProperties, stripWriteOnlyProperties } from '../filterRequiredProperties';
-import { assertSome } from '@stoplight/prism-core/src/__tests__/utils';
+import { assertSome } from '@stainless-api/prism-core/src/__tests__/utils';
 
 describe('filterRequiredProperties', () => {
   it('strips writeOnly properties', () => {

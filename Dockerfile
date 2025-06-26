@@ -64,9 +64,9 @@ WORKDIR /usr/src/prism/packages/cli/
 
 RUN if [ "$BUILD_TYPE" = "development" ] ; then \
     cd /usr/src/prism/packages/core && yarn link && \
-    cd /usr/src/prism/packages/http && yarn link @stoplight/prism-core && yarn link && \
-    cd /usr/src/prism/packages/http-server && yarn link @stoplight/prism-core && yarn link @stoplight/prism-http && yarn link && \
-    cd /usr/src/prism/packages/cli && yarn link @stoplight/prism-core && yarn link @stoplight/prism-http && yarn link @stoplight/prism-http-server && yarn link ; \
+    cd /usr/src/prism/packages/http && yarn link @stainless-api/prism-core && yarn link && \
+    cd /usr/src/prism/packages/http-server && yarn link @stainless-api/prism-core && yarn link @stainless-api/prism-http && yarn link && \
+    cd /usr/src/prism/packages/cli && yarn link @stainless-api/prism-core && yarn link @stainless-api/prism-http && yarn link @stainless-api/prism-http-server && yarn link ; \
 fi
 
 EXPOSE 4010

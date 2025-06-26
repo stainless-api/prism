@@ -1,4 +1,4 @@
-import { assertLeft, assertRight } from '@stoplight/prism-core/src/__tests__/utils';
+import { assertLeft, assertRight } from '@stainless-api/prism-core/src/__tests__/utils';
 import { serializeBody } from '../../forwarder';
 
 describe('serializeBody()', () => {

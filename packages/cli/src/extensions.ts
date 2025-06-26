@@ -3,7 +3,7 @@ import { decycle } from '@stoplight/json';
 import { get, camelCase, forOwn } from 'lodash';
 import { JSONSchemaFaker } from 'json-schema-faker';
 import type { JSONSchemaFakerOptions } from 'json-schema-faker';
-import { resetJSONSchemaGenerator } from '@stoplight/prism-http';
+import { resetJSONSchemaGenerator } from '@stainless-api/prism-http';
 
 export async function configureExtensionsUserProvided(
   specFilePathOrObject: string | object,

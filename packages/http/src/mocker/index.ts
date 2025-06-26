@@ -1,4 +1,4 @@
-import { IPrismComponents, IPrismDiagnostic, IPrismInput } from '@stoplight/prism-core';
+import { IPrismComponents, IPrismDiagnostic, IPrismInput } from '@stainless-api/prism-core';
 import {
   DiagnosticSeverity,
   Dictionary,

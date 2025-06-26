@@ -1,4 +1,4 @@
-import { IPrismDiagnostic } from '@stoplight/prism-core';
+import { IPrismDiagnostic } from '@stainless-api/prism-core';
 import * as O from 'fp-ts/Option';
 import { sequenceT } from 'fp-ts/Apply';
 import { getSemigroup } from 'fp-ts/NonEmptyArray';

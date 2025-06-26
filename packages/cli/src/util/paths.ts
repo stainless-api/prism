@@ -3,7 +3,7 @@ import {
   serializeWithDeepObjectStyle,
   serializeWithPipeDelimitedStyle,
   serializeWithSpaceDelimitedStyle,
-} from '@stoplight/prism-http';
+} from '@stainless-api/prism-http';
 import {
   Dictionary,
   HttpParamStyles,

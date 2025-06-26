@@ -2,7 +2,7 @@ import { matchPath } from '../matchPath';
 import faker from '@faker-js/faker';
 import { MatchType } from '../types';
 import { randomPath } from './utils';
-import { assertRight } from '@stoplight/prism-core/src/__tests__/utils';
+import { assertRight } from '@stainless-api/prism-core/src/__tests__/utils';
 
 describe('matchPath()', () => {
   test('root path should match another root path', () => {

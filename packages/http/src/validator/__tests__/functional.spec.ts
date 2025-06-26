@@ -1,7 +1,7 @@
 import { DiagnosticSeverity, HttpParamStyles, IHttpOperation } from '@stoplight/types';
 import { httpInputs, httpOperations, httpOutputs } from '../../__tests__/fixtures';
 import { validateInput, validateOutput } from '../index';
-import { assertRight, assertLeft } from '@stoplight/prism-core/src/__tests__/utils';
+import { assertRight, assertLeft } from '@stainless-api/prism-core/src/__tests__/utils';
 import * as faker from '@faker-js/faker/locale/en';
 
 const BAD_INPUT = Object.assign({}, httpInputs[2], {

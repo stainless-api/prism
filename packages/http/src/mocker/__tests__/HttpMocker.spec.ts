@@ -1,4 +1,4 @@
-import { createLogger, IPrismInput } from '@stoplight/prism-core';
+import { createLogger, IPrismInput } from '@stainless-api/prism-core';
 import { IHttpOperation, INodeExample, DiagnosticSeverity } from '@stoplight/types';
 import { right } from 'fp-ts/ReaderEither';
 import * as E from 'fp-ts/Either';
@@ -7,7 +7,7 @@ import mock from '../../mocker';
 import * as JSONSchemaGenerator from '../../mocker/generator/JSONSchema';
 import { IHttpRequest, JSONSchema } from '../../types';
 import helpers from '../negotiator/NegotiatorHelpers';
-import { assertLeft, assertRight } from '@stoplight/prism-core/src/__tests__/utils';
+import { assertLeft, assertRight } from '@stainless-api/prism-core/src/__tests__/utils';
 import { runCallback } from '../callback/callbacks';
 
 jest.mock('../callback/callbacks', () => ({

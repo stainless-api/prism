@@ -1,4 +1,4 @@
-import { IHttpConfig, PickRequired, PrismHttpComponents, PrismHttpInstance } from '@stoplight/prism-http';
+import { IHttpConfig, PickRequired, PrismHttpComponents, PrismHttpInstance } from '@stainless-api/prism-http';
 import { Logger } from 'pino';
 
 export interface IPrismHttpServerOpts {

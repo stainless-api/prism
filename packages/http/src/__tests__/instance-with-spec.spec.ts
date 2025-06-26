@@ -1,4 +1,4 @@
-import { createLogger } from '@stoplight/prism-core';
+import { createLogger } from '@stainless-api/prism-core';
 import { basename, resolve } from 'path';
 import { IHttpRequest, ProblemJsonError } from '../';
 import { UNPROCESSABLE_ENTITY } from '../mocker/errors';

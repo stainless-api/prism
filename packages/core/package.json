@@ -1,13 +1,13 @@
 {
-  "name": "@stoplight/prism-core",
+  "name": "@stainless-api/prism-core",
   "version": "5.11.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "author": "Stoplight <support@stoplight.io>",
+  "author": "Stainless <dev@stainlessapi.com>",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/stoplightio/prism.git"
+    "url": "https://github.com/stainless-api/prism.git"
   },
   "files": [
     "/dist"
