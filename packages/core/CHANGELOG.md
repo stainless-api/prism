@@ -1,5 +1,18 @@
 # Changelog
 
+## [5.12.0](https://github.com/stainless-api/prism/compare/v5.11.2...v5.12.0) (2025-06-27)
+
+
+### Features
+
+* **deps:** bump node from 16 to 18.20 ([#2520](https://github.com/stainless-api/prism/issues/2520)) ([4b175a6](https://github.com/stainless-api/prism/commit/4b175a614a7d1f184863d741c8cbec494b37b57f))
+* **http:** added support to Deprecation header for deprecated operations [#1563](https://github.com/stainless-api/prism/issues/1563) ([1415319](https://github.com/stainless-api/prism/commit/14153193c69bccd960e62bc2b86ec23470d66921))
+
+
+### Bug Fixes
+
+* **packaging:** update @stoplight/prism-* to @stainless-api/prism-* ([#14](https://github.com/stainless-api/prism/issues/14)) ([93704a6](https://github.com/stainless-api/prism/commit/93704a6dcd7aac8c808548af7fe8acecfeb35c69))
+
 ## [5.11.2](https://github.com/stainless-api/prism/compare/v5.11.1...v5.11.2) (2025-06-26)
 
 
