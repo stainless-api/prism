@@ -16,6 +16,14 @@ The format for this file is based on [Keep a Changelog](https://keepachangelog.c
 
 <!-- markdown-link-check-disable -->
 
+## [5.13.3](https://github.com/stainless-api/prism/compare/v5.13.2...v5.13.3) (2025-06-27)
+
+
+### Bug Fixes
+
+* bump version of @stoplight/json ([#20](https://github.com/stainless-api/prism/issues/20)) ([fce25cb](https://github.com/stainless-api/prism/commit/fce25cbba5fa1af40fbeb9f9df40908682577ff9))
+* **packaging:** update @stoplight/prism-* to @stainless-api/prism-* ([#14](https://github.com/stainless-api/prism/issues/14)) ([93704a6](https://github.com/stainless-api/prism/commit/93704a6dcd7aac8c808548af7fe8acecfeb35c69))
+
 ## [5.13.2](https://github.com/stainless-api/prism/compare/v5.13.1...v5.13.2) (2025-06-26)
 
 
