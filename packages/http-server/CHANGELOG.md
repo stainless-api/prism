@@ -1,5 +1,31 @@
 # Changelog
 
+## [5.16.0](https://github.com/stainless-api/prism/compare/v5.15.0...v5.16.0) (2025-07-01)
+
+
+### Features
+
+* 1813 start using 415 code for invalid content-types instead constantly inferring it ([df475fc](https://github.com/stainless-api/prism/commit/df475fcb67608428c143b3e6a988d95a1ef1fd3e))
+* adds more standard compliant request body handling ([#2260](https://github.com/stainless-api/prism/issues/2260)) ([3b56cb7](https://github.com/stainless-api/prism/commit/3b56cb72f41d106cbcc95bb7c27711a3c05c6298))
+* **deps:** bump node from 16 to 18.20 ([#2520](https://github.com/stainless-api/prism/issues/2520)) ([4b175a6](https://github.com/stainless-api/prism/commit/4b175a614a7d1f184863d741c8cbec494b37b57f))
+* STOP-243 - create prism instance with full spec ([#2501](https://github.com/stainless-api/prism/issues/2501)) ([ed41dca](https://github.com/stainless-api/prism/commit/ed41dca89e5ad673f1a0d813b403a44de7e367b2))
+
+
+### Bug Fixes
+
+* **http-server:** discard request body if the content-length header i… ([#2103](https://github.com/stainless-api/prism/issues/2103)) ([c172f42](https://github.com/stainless-api/prism/commit/c172f42c89d67c3963eb9962d0550d5126756d34))
+* mock issue resolve for similar templated requests ([#2564](https://github.com/stainless-api/prism/issues/2564)) ([b8e9fd8](https://github.com/stainless-api/prism/commit/b8e9fd815f0f612664b36704e4200d5473875fbe))
+* **packaging:** update @stoplight/prism-* to @stainless-api/prism-* ([#14](https://github.com/stainless-api/prism/issues/14)) ([93704a6](https://github.com/stainless-api/prism/commit/93704a6dcd7aac8c808548af7fe8acecfeb35c69))
+* update http-spec ([#2037](https://github.com/stainless-api/prism/issues/2037)) ([72d6882](https://github.com/stainless-api/prism/commit/72d6882bc39a673e65b1fc10ff88d3581b838dca))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @stainless-api/prism-core bumped from ^5.12.0 to ^5.13.0
+    * @stainless-api/prism-http bumped from ^5.15.0 to ^5.16.0
+
 ## [5.15.0](https://github.com/stainless-api/prism/compare/v5.14.0...v5.15.0) (2025-06-27)
 
 
