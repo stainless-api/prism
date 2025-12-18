@@ -26,6 +26,7 @@ jobs:
 
       - run: yarn test
 
-      - run: yarn workspaces foreach --no-private npm publish --provenance --access public
+      - run: npx lerna publish from-package --yes
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
