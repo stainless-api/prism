@@ -30,10 +30,10 @@ const checkRequiredBodyIsProvided = (requestBody: O.Option<IHttpOperationRequest
   pipe(
     requestBody,
     E.fromPredicate<O.Option<IHttpOperationRequestBody>, NonEmptyArray<IPrismDiagnostic>>(
-      requestBody => O.isNone(requestBody) || !(!!requestBody.value.required && !body),
+      requestBody => O.isNone(requestBody) || !(!!requestBody.value.required && body == null),
       () => [{ code: 'required', message: 'Body parameter is required', severity: DiagnosticSeverity.Error }]
     ),
-    E.map(requestBody => [requestBody, O.fromNullable(body)] as const)
+    E.map(requestBody => [requestBody, body == null ? O.none : O.some(body)] as const)
   );
 
 const isMediaTypeSupportedInContents = (mediaType?: string, contents?: IMediaTypeContent[]): boolean =>
