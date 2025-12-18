@@ -180,6 +180,37 @@ describe('HttpValidator', () => {
         });
         assertRight(result);
       });
+
+      it('accepts null as a valid null body', () => {
+        const result = validator.validateInput({
+          resource: {
+            method: 'post',
+            path: '/',
+            id: '1',
+            request: {
+              body: {
+                id: faker.random.word(),
+                required: true,
+                contents: [
+                  {
+                    id: faker.random.word(),
+                    mediaType: 'application/json',
+                    schema: { type: 'null' },
+                  },
+                ],
+              },
+            },
+            responses: [{ id: faker.random.word(), code: '200' }],
+          },
+          element: {
+            method: 'post',
+            url: { path: '/', query: {} },
+            body: null,
+            headers: { 'content-type': 'application/json', 'content-length': '4' },
+          },
+        });
+        assertRight(result);
+      });
     });
 
     describe('headers validation in enabled', () => {

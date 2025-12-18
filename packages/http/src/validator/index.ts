@@ -26,14 +26,18 @@ import { wildcardMediaTypeMatch } from './utils/wildcardMediaTypeMatch';
 
 export { validateSecurity } from './validators/security';
 
-const checkRequiredBodyIsProvided = (requestBody: O.Option<IHttpOperationRequestBody>, body: unknown) =>
+const checkRequiredBodyIsProvided = (
+  requestBody: O.Option<IHttpOperationRequestBody>,
+  body: unknown,
+  bodyIsProvided: boolean
+) =>
   pipe(
     requestBody,
     E.fromPredicate<O.Option<IHttpOperationRequestBody>, NonEmptyArray<IPrismDiagnostic>>(
-      requestBody => O.isNone(requestBody) || !(!!requestBody.value.required && body == null),
+      requestBody => O.isNone(requestBody) || !(!!requestBody.value.required && !bodyIsProvided),
       () => [{ code: 'required', message: 'Body parameter is required', severity: DiagnosticSeverity.Error }]
     ),
-    E.map(requestBody => [requestBody, body == null ? O.none : O.some(body)] as const)
+    E.map(requestBody => [requestBody, bodyIsProvided ? O.some(body) : O.none] as const)
   );
 
 const isMediaTypeSupportedInContents = (mediaType?: string, contents?: IMediaTypeContent[]): boolean =>
@@ -73,17 +77,23 @@ const validateInputBody = (
   bundle: unknown,
   body: unknown,
   headers: IHttpNameValue
-) =>
-  pipe(
-    checkRequiredBodyIsProvided(requestBody, body),
-    E.map(b => [...b, caseless(headers || {})] as const),
+) => {
+  const headersCaseless = caseless(headers || {});
+  const contentLength = parseInt(headersCaseless.get('content-length')) || 0;
+  // A body is considered "provided" if:
+  // - body is not undefined, AND
+  // - body is not null OR content-length > 0 (null with content-length > 0 means JSON null value)
+  const bodyIsProvided = body !== undefined && (body !== null || contentLength > 0);
+
+  return pipe(
+    checkRequiredBodyIsProvided(requestBody, body, bodyIsProvided),
+    E.map(b => [...b, headersCaseless] as const),
     E.chain(([requestBody, body, headers]) => {
       const contentTypeHeader = headers.get('content-type');
       const [multipartBoundary, mediaType] = contentTypeHeader
         ? parseMIMEHeader(contentTypeHeader)
         : [undefined, undefined];
 
-      const contentLength = parseInt(headers.get('content-length')) || 0;
       if (contentLength === 0) {
         // generously allow this content type if there isn't a body actually provided
         return E.right([requestBody, body, mediaType, multipartBoundary] as const);
@@ -114,6 +124,7 @@ const validateInputBody = (
       validateInputIfBodySpecIsProvided(body, requestBody, mediaType, multipartBoundary, bundle)
     )
   );
+};
 
 export const validateInput: ValidatorFn<IHttpOperation, IHttpRequest> = ({ resource, element }) => {
   const { request } = resource;
