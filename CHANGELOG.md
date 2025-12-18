@@ -16,6 +16,14 @@ The format for this file is based on [Keep a Changelog](https://keepachangelog.c
 
 <!-- markdown-link-check-disable -->
 
+## [5.13.4](https://github.com/stainless-api/prism/compare/v5.13.3...v5.13.4) (2025-12-18)
+
+
+### Bug Fixes
+
+* correctly handle body requests that are falsy ([9ec460e](https://github.com/stainless-api/prism/commit/9ec460ebb041d2922dd23a7b37f5f646e789b392))
+* correctly handle cases where null is sent as the body ([d255b00](https://github.com/stainless-api/prism/commit/d255b00121c2d241c9391d9dc043e2f91c6c16c8))
+
 ## [5.13.3](https://github.com/stainless-api/prism/compare/v5.13.2...v5.13.3) (2025-06-27)
 
 
