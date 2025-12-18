@@ -1,6 +1,21 @@
 # Changelog
 
 
+## [5.16.1](https://github.com/stainless-api/prism/compare/v5.16.0...v5.16.1) (2025-12-18)
+
+
+### Bug Fixes
+
+* correctly handle body requests that are falsy ([9ec460e](https://github.com/stainless-api/prism/commit/9ec460ebb041d2922dd23a7b37f5f646e789b392))
+* correctly handle cases where null is sent as the body ([d255b00](https://github.com/stainless-api/prism/commit/d255b00121c2d241c9391d9dc043e2f91c6c16c8))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @stainless-api/prism-core bumped from ^5.13.0 to ^5.13.1
+
 ## [5.16.0](https://github.com/stainless-api/prism/compare/v5.15.0...v5.16.0) (2025-07-01)
 
 
