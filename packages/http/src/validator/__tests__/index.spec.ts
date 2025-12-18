@@ -77,6 +77,111 @@ describe('HttpValidator', () => {
       });
     });
 
+    describe('falsey primitive body values', () => {
+      afterAll(() => {
+        // Re-setup the mocks that were defined in the outer beforeAll
+        jest.spyOn(validators, 'validateQuery').mockReturnValue(E.left([mockError]));
+        jest.spyOn(validators, 'validateBody').mockReturnValue(E.left([mockError]));
+        jest.spyOn(validators, 'validateHeaders').mockReturnValue(E.left([mockError]));
+        jest.spyOn(validators, 'validatePath').mockReturnValue(E.left([mockError]));
+      });
+
+      beforeEach(() => jest.restoreAllMocks());
+
+      it('accepts 0 as a valid integer body', () => {
+        const result = validator.validateInput({
+          resource: {
+            method: 'post',
+            path: '/',
+            id: '1',
+            request: {
+              body: {
+                id: faker.random.word(),
+                required: true,
+                contents: [
+                  {
+                    id: faker.random.word(),
+                    mediaType: 'application/json',
+                    schema: { type: 'integer' },
+                  },
+                ],
+              },
+            },
+            responses: [{ id: faker.random.word(), code: '200' }],
+          },
+          element: {
+            method: 'post',
+            url: { path: '/', query: {} },
+            body: 0,
+            headers: { 'content-type': 'application/json', 'content-length': '1' },
+          },
+        });
+        assertRight(result);
+      });
+
+      it('accepts false as a valid boolean body', () => {
+        const result = validator.validateInput({
+          resource: {
+            method: 'post',
+            path: '/',
+            id: '1',
+            request: {
+              body: {
+                id: faker.random.word(),
+                required: true,
+                contents: [
+                  {
+                    id: faker.random.word(),
+                    mediaType: 'application/json',
+                    schema: { type: 'boolean' },
+                  },
+                ],
+              },
+            },
+            responses: [{ id: faker.random.word(), code: '200' }],
+          },
+          element: {
+            method: 'post',
+            url: { path: '/', query: {} },
+            body: false,
+            headers: { 'content-type': 'application/json', 'content-length': '5' },
+          },
+        });
+        assertRight(result);
+      });
+
+      it('accepts empty string as a valid string body', () => {
+        const result = validator.validateInput({
+          resource: {
+            method: 'post',
+            path: '/',
+            id: '1',
+            request: {
+              body: {
+                id: faker.random.word(),
+                required: true,
+                contents: [
+                  {
+                    id: faker.random.word(),
+                    mediaType: 'application/json',
+                    schema: { type: 'string' },
+                  },
+                ],
+              },
+            },
+            responses: [{ id: faker.random.word(), code: '200' }],
+          },
+          element: {
+            method: 'post',
+            url: { path: '/', query: {} },
+            body: '',
+            headers: { 'content-type': 'application/json', 'content-length': '2' },
+          },
+        });
+        assertRight(result);
+      });
+    });
+
     describe('headers validation in enabled', () => {
       describe('request is not set', () => {
         it('does not validate headers', validate(undefined, undefined, 0));
